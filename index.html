@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To Do List</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="CSS/style.css">
+    </head>
+    <body>
+        <div class="d-flex flex-column align-items-center todolist-container">
+                <div class="todolist-day" id="target-date">
+                    <script id="dateTemplate" type="x-tmpl-mustache">
+                        <h1 class="text-justify">{{day}}</h1>
+                        <h6 class="text-justify">{{currentDate}}</h6>
+                    </script>
+                </div>
+                <div class="todolist-input-container">
+                    <input id="todolist-input" placeholder="Add a task...">
+                </div>
+                <ul class="todolist-list" id="target-list">
+                    <li class="list-item">
+                        <div class="row">
+                            <div class="col-sm-1 list-item-pin">
+                               
+                            </div>
+                            <div class="col-sm-1 list-item-checkbox">
+                                <input type="checkbox" value="Bike">
+                            </div>
+                            <div class="col-sm-8 list-item-details">
+
+                            </div>
+                            <div class="col-sm-1 list-item-menu">
+
+                            </div>
+                        </div>
+                    </li>
+                    <script id="todolistTemplate" type="x-tmpl-mustache">
+                        {{#todolist}}
+                            <li>
+                                <div class="row">
+                                    <div class="col-sm-1 list-item-pin">
+                                        
+                                    </div>
+                                    <div class="col-sm-1 list-item-checkbox">
+                                        <input type="checkbox" value="{{id}}" {{checked}}>
+                                    </div>
+                                    <div class="col-sm-8 list-item-details">
+
+                                    </div>
+                                    <div class="col-sm-1 list-item-menu">
+
+                                    </div>
+                                </div>
+                            </li>
+                        {{/todolist}}
+                    </script>
+                </ul>
+            </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
+        <script src="JS/todolist.js"></script>
+    </body>
+</html>

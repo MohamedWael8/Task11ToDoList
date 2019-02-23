@@ -1,0 +1,44 @@
+body
+{
+    background-color: #3c424a;
+}
+
+
+.todolist-day
+{
+    margin-top: 5em;
+    margin-bottom: 4em;
+}
+
+.todolist-day h1
+{
+    color:white;
+    margin-bottom: 1em;
+}
+
+.todolist-day h6
+{
+    color:darkgrey;
+    margin-left: 1.5em;
+}
+
+
+#todolist-input
+{
+    background-color :#343a40;
+    width: 40em;
+    padding: 0.8em;
+    margin-bottom: 3em;
+    color: white;
+    overflow: hidden;
+    border-style: solid;
+    border-color: #2b3035;
+    border-width: 0.05em;
+    border-radius: 0.3em;
+}
+
+.list-item
+{
+    width: 50em;
+    list-style: none;
+}
