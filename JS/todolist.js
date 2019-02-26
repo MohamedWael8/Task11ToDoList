@@ -25,6 +25,37 @@ $(document).ready(
                 this.$targetDate = $('#target-date');
                 this.templateList = $('#todolistTemplate').html();
                 this.$targetList = $('#target-list');
+                this.$input = $('#todolist-input');
+                this.$input.keypress(function(e)
+                {
+                    if(e.which == 13) 
+                    {
+                       octopus.AddItem($(this).val());
+                       $(this).val("")
+                    }
+                });
+                this.$targetList.on('click','.dropbtn',function()
+                {
+                    if($(this).next().css('display') == 'none')
+                    {
+                        $(this).next().show();
+                    }
+                    else
+                        $(this).next().hide();
+                    
+                });
+
+                this.$targetList.on('click','.editButton',function()
+                {
+                   var $input = $(this).parents(".list-item").find(".list-item-input");
+                   $input.prop('disabled',false)
+                });
+
+                this.$targetList.on('blur','.list-item-input',function()
+                {
+                    octopus.EditItem($(this).val(),$(this).index())
+                });
+
                 this.render();
             },
 
@@ -39,7 +70,7 @@ $(document).ready(
                 var templateList = this.templateList;
                 var $targetList = this.$targetList;
                 Mustache.parse(templateList);  
-                var rendered = Mustache.render(templateList, octopus.returnToDoList());
+                var rendered = Mustache.render(templateList, octopus.returnModel());
                 $targetList.html(rendered);
             }
         }
@@ -50,6 +81,11 @@ $(document).ready(
             {
                 model.init();
                 view.init();
+            },
+            
+            returnModel : function()
+            {
+                return model;
             },
 
             returnToDoList : function()
@@ -71,6 +107,20 @@ $(document).ready(
             {
                 return new Date().toLocaleDateString("en-EG",{"weekday" : "long"}).toString();
             },
+
+            AddItem : function(ItemName)
+            {
+                model.todolist.push({Name : ItemName , isPinned : false , isDone : false , TimeStamp : "" , Start : false });
+                view.render();
+                console.log(model.todolist);
+            },
+
+            EditItem : function(NewName , Index)
+            {
+                model.todolist[Index].Name = NewName;
+                console.log(model.todolist);
+                view.render();
+            }
 
             
         }

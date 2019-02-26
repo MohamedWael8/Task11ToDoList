@@ -18,25 +18,9 @@
                     <input id="todolist-input" placeholder="Add a task...">
                 </div>
                 <ul class="todolist-list" id="target-list">
-                    <li class="list-item">
-                        <div class="row">
-                            <div class="col-sm-1 list-item-pin">
-                               
-                            </div>
-                            <div class="col-sm-1 list-item-checkbox">
-                                <input type="checkbox" value="Bike">
-                            </div>
-                            <div class="col-sm-8 list-item-details">
-
-                            </div>
-                            <div class="col-sm-1 list-item-menu">
-
-                            </div>
-                        </div>
-                    </li>
                     <script id="todolistTemplate" type="x-tmpl-mustache">
                         {{#todolist}}
-                            <li>
+                            <li class="list-item">
                                 <div class="row">
                                     <div class="col-sm-1 list-item-pin">
                                         
@@ -44,11 +28,22 @@
                                     <div class="col-sm-1 list-item-checkbox">
                                         <input type="checkbox" value="{{id}}" {{checked}}>
                                     </div>
-                                    <div class="col-sm-8 list-item-details">
-
+                                    <div class="col-sm-7 list-item-details">
+                                        <input class="list-item-input" value="{{Name}}" disabled>
                                     </div>
                                     <div class="col-sm-1 list-item-menu">
-
+                                        <div class="dropdown">
+                                            <!-- three dots -->
+                                            <ul class="dropbtn icons">
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                            </ul>
+                                            <!-- menu -->
+                                            <div id="myDropdown" class="dropdown-content">
+                                                <button class="btn editButton">Edit</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
