@@ -56,6 +56,12 @@ $(document).ready(
                     octopus.EditItem($(this).val(),$(this).index())
                 });
 
+                this.$targetList.on('click','.pinButton',function()
+                {
+                   var index = $(this).parents(".list-item").find(".list-item-input").index();
+                   octopus.PinItem(index);
+                  
+                });
                 this.render();
             },
 
@@ -119,6 +125,12 @@ $(document).ready(
             {
                 model.todolist[Index].Name = NewName;
                 console.log(model.todolist);
+                view.render();
+            },
+
+            PinItem : function(Index)
+            {
+                model.todolist[Index].isPinned = true;
                 view.render();
             }
 
